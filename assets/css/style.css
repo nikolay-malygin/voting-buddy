@@ -11,12 +11,20 @@
 	--background-color-primary: rgba(128, 128, 128, 30%);
 	--background-color-secondary: rgb(255, 255, 255, 10%);
 
-	--button-background-color: linear-gradient(0deg, rgba(94, 94, 94, 0.18) 0%, rgba(255, 255, 255, 0.06));
-
-	--shadow-default: 2px 2px 20px 0px rgba(0, 0, 0, 0.15);
+	--shadow-default: 2px 2px 20px 0px rgba(0, 0, 0, 0.20);
 
 	--color-red: #FF453A;
+	--color-orange: #FF9D0A;
+	--color-yellow: #FFD60A;
+	--color-green: #32D74B;
 	--color-blue: #0A84FF;
+	--color-mint: #66D4CF;
+	--color-teal: #6AC4DC;
+	--color-cyan: #5AC8F5;
+	--color-purple: #BF5AF2;
+	--color-indigo: #5E5CE6;
+	--color-pink: #FF375F;
+
 	--text-color: white;
 	--text-muted-color: rgba(255, 255, 255, 0.23);
 }
@@ -105,10 +113,9 @@ label::after {
 }
 
 .btn-default {
-	background-color: var(--background-color-secondary) !important;
+	background-color: var(--color-teal) !important;
 	box-shadow: var(--shadow-default);
 	transition: var(--transition-default);
-
 }
 
 .btn-default:hover {
