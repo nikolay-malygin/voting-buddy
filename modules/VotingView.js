@@ -25,6 +25,10 @@ VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics)
 {
 	document.addEventListener('DOMContentLoaded', () => {
 		getTopics(this.render.bind(this));
+
+		setInterval(() => {
+			getTopics(this.render.bind(this));
+		}, 2000);
 	});
 
 	this.createTopicBtn.onclick = () => {
