@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Voting Buddy</title>
+
+	<link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+	<!-- Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous" defer></script>
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="./assets/css/style.css">
+
+	<!-- JS -->
+	<script type="module" src="./start.js"></script>
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-12 min-vh-100 d-flex justify-content-center align-items-center">
+				<div class="box p-3 p-md-5">
+					<!-- Header -->
+					<h1 class="mb-4 text-center">Voting Buddy</h1>
+
+					<!-- Input -->
+					<div class="input-form p-3 p-md-4 d-flex gap rounded-5 gap-3">
+						<div class="form-floating">
+							<input type="text" class="form-control rounded-5" id="topicInputField" placeholder="">
+							<label for="topicInputField" class="muted-text">Your Topic</label>
+						</div>
+						<button id="create-topic-btn" class="btn btn-default px-4 py-3 rounded-5 align-self-start">Create</button>
+					</div>
+
+					<!-- Output -->
+					<div class="table-responsive mt-5">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Votes</th>
+									<th scope="col">Topic</th>
+									<th scope="col" colspan="2">Action</th>
+								</tr>
+							</thead>
+							<tbody id="table-body">
+								<tr>
+									<td scope="row" class="ps-4">0</td>
+									<td colspan="1">Example Topic</td>
+									<td class="px-0"><i class="fa-solid fa-circle-arrow-up fa-lg py-3 px-2 rounded-3 blue-color voteup"></i></td>
+									<td class="px-0"><i class="fa-solid fa-circle-arrow-down fa-lg py-3 px-2 rounded-3 red-color votedown"></i></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

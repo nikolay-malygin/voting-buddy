@@ -1,0 +1,146 @@
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+	--font-work-sans: 'Work Sans', sans-serif;
+
+	--transition-default: all 300ms ease-in-out;
+	--scale-factor-default: calc(0.97);
+
+	--background-color-primary: rgba(128, 128, 128, 30%);
+	--background-color-secondary: rgb(255, 255, 255, 10%);
+
+	--button-background-color: linear-gradient(0deg, rgba(94, 94, 94, 0.18) 0%, rgba(255, 255, 255, 0.06));
+
+	--shadow-default: 2px 2px 20px 0px rgba(0, 0, 0, 0.15);
+
+	--color-red: #FF453A;
+	--color-blue: #0A84FF;
+	--text-color: white;
+	--text-muted-color: rgba(255, 255, 255, 0.23);
+}
+
+/* Hide the scrollbar of the window/element */
+*::-webkit-scrollbar {
+	width: 0 !important;
+}
+
+*::-webkit-scrollbar-track {
+	background-color: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: transparent !important;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+
+*, *::after, *:not(i)::before, *::placeholder {
+	font-family: var(--font-work-sans);
+	color: var(--text-color) !important;
+}
+
+body {
+	min-height: 100vh;
+	line-height: 1.75 !important;
+	letter-spacing: 0.02rem !important;
+
+	background-color: #442848;
+	background-image: url("../images/background-image.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	letter-spacing: -0.04375rem !important;
+	font-weight: 600 !important;
+}
+
+.muted-text {
+	color: var(--text-muted-color) !important;
+}
+
+.red-color {
+	background-color: var(--color-red) !important;
+}
+
+.blue-color {
+	background-color: var(--color-blue) !important;
+}
+
+.box {
+	background-color: var(--background-color-primary);
+	border: 1px solid rgba(255, 255, 255, 55%);
+	border-radius: 50px;
+	backdrop-filter: blur(50px);
+	-webkit-backdrop-filter: blur(50px);
+}
+
+.input-form {
+	background-color: var(--background-color-secondary);
+	border-radius: 10px;
+	box-shadow: var(--shadow-default);
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+input {
+	background: rgba(0, 0, 0, 0.40) !important;
+	border: none !important;
+	box-shadow: 1px 1.5px 4px 0px rgba(0, 0, 0, 0.10) inset, 0px -1px 4px 0px rgba(0, 0, 0, 0.08) inset !important;
+	background-blend-mode: luminosity, color-burn;
+}
+
+/* Style the label normally */
+label::after {
+	background-color: transparent !important;
+}
+
+.btn-default {
+	background-color: var(--background-color-secondary) !important;
+	box-shadow: var(--shadow-default);
+	transition: var(--transition-default);
+
+}
+
+.btn-default:hover {
+	scale: calc(var(--scale-factor-default));
+}
+
+
+/* Table styles */
+.table-responsive, table {
+	border-radius: 10px !important;
+	overflow: hidden;
+}
+
+table {
+	box-shadow: var(--shadow-default);
+}
+.table>:not(caption)>*>* {
+	border-bottom-width: 0px;
+}
+
+.table thead th {
+	background: var(--background-color-secondary);
+}
+
+.table tbody tr td {
+	background-color: var(--background-color-primary);
+}
+
+.table tbody tr:nth-child(even) td {
+	background-color: var(--background-color-secondary);
+}
+
+td i:hover {
+	cursor: pointer;
+}
