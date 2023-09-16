@@ -107,7 +107,6 @@ input {
 	background-blend-mode: luminosity, color-burn;
 }
 
-/* Style the label normally */
 label::after {
 	background-color: transparent !important;
 }

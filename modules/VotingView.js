@@ -28,11 +28,13 @@ VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics)
 
 		setInterval(() => {
 			getTopics(this.render.bind(this));
-		}, 2000);
+		}, 3000);
 	});
 
-	this.createTopicBtn.onclick = () => {
-		addTopic(this.inputField.value, this.render.bind(this));
+	this.createTopicBtn.onclick = (event) => {
+		event.preventDefault();
+		if (this.inputField.value.length >= 3)
+			addTopic(this.inputField.value, this.render.bind(this));
 	}
 
 	// Event Delegation vote up/down
@@ -42,7 +44,7 @@ VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics)
 
 		if(voteUpBtn && this.tableBody.contains(voteUpBtn)) {
 			voteUp(voteUpBtn.dataset.topicid, this.render.bind(this));
-		}""
+		}
 
 		if(voteDownBtn && this.tableBody.contains(voteDownBtn)) {
 			voteDown(voteDownBtn.dataset.topicid, this.render.bind(this));
