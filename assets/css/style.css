@@ -150,3 +150,7 @@ table {
 td i:hover {
 	cursor: pointer;
 }
+
+.table tbody tr {
+	transition: var(--transition-default);
+}

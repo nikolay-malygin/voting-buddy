@@ -25,13 +25,13 @@ VotingModel.prototype.addTopic = function (topic, renderCallback) {
 }
 
 VotingModel.prototype.voteUp = function (topicID, renderCallback) {
-	this.topicList[this.findTopicByID(topicID)].votes += 1;
+	this.topicList[this.findTopicIdxByID(topicID)].votes += 1;
 	this.sort();
 	this.votingDao.setTopics(this.topicList, renderCallback);
 }
 
 VotingModel.prototype.voteDown = function (topicID, renderCallback) {
-	this.topicList[this.findTopicByID(topicID)].votes -= 1;
+	this.topicList[this.findTopicIdxByID(topicID)].votes -= 1;
 	this.sort();
 	this.votingDao.setTopics(this.topicList, renderCallback);
 }
@@ -43,7 +43,7 @@ VotingModel.prototype.sort = function() {
 }
 
 // Helper func.: Find id of the topic in the list by ID of the topic
-VotingModel.prototype.findTopicByID = function (topicID) {
+VotingModel.prototype.findTopicIdxByID = function (topicID) {
 	for (let i = 0; i < this.topicList.length; i++)
 		if (this.topicList[i].id == topicID)
 			return i;
