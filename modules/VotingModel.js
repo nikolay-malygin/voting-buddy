@@ -1,5 +1,4 @@
 import { Topic } from "./Topic.js";
-
 export function VotingModel (votingView, votingDAO) {
 	this.topicList = [];
 	this.votingDao = votingDAO;

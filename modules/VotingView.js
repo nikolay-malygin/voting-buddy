@@ -41,7 +41,7 @@ VotingView.prototype.renderWithAnimation = function(topicList) {
 		let nextRow = rows[i + 1];
 
 		let currentTopicID = rows[i].querySelector('i').dataset.topicid;
-		let nextTopicID = rows[i + 1].querySelectorAll('i')[1].dataset.topicid;
+		let nextTopicID = rows[i + 1].querySelector('i').dataset.topicid;
 
 		if(i != this.findTopicIdxByID(currentTopicID, topicList) &&
 			 i+1 != this.findTopicIdxByID(nextTopicID, topicList)) {
@@ -61,8 +61,8 @@ VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics)
 		getTopics(this.render.bind(this));
 
 		setInterval(() => {
-			getTopics(this.render.bind(this));
-		}, 3000);
+			getTopics(this.renderWithAnimation.bind(this));
+		}, 3500);
 	});
 
 	this.createTopicBtn.onclick = (event) => {
@@ -84,5 +84,4 @@ VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics)
 			voteDown(voteDownBtn.dataset.topicid, this.renderWithAnimation.bind(this));
 		}
 	}
-
 }
