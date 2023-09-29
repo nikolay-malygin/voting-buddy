@@ -7,8 +7,10 @@ export function VotingView(inputFieldID, createBtnID, tableBodyID)
 
 VotingView.prototype.findTopicIdxByID = function (topicID, topicList) {
 	for (let i = 0; i < topicList.length; i++)
-	if (topicList[i].id == topicID)
-	return i;
+
+	if (topicList[i].id == topicID) {
+		return i;
+	}
 
 	return null;
 }
@@ -43,7 +45,7 @@ VotingView.prototype.renderWithAnimation = function(topicList) {
 
 		let currentTopicID = rows[i].querySelector('i').dataset.topicid;
 		let nextTopicID = rows[i + 1].querySelector('i').dataset.topicid;
-		
+
 		if(i != this.findTopicIdxByID(currentTopicID, topicList) &&
 		i+1 != this.findTopicIdxByID(nextTopicID, topicList)) {
 			currentRow.style = 'transform: translateY(+100%)';
