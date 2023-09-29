@@ -7,8 +7,8 @@ export function VotingView(inputFieldID, createBtnID, tableBodyID)
 
 VotingView.prototype.findTopicIdxByID = function (topicID, topicList) {
 	for (let i = 0; i < topicList.length; i++)
-		if (topicList[i].id == topicID)
-			return i;
+	if (topicList[i].id == topicID)
+	return i;
 
 	return null;
 }
@@ -24,10 +24,11 @@ VotingView.prototype.render = function(topicList) {
 VotingView.prototype.createTableRow = function(topic) {
 	return `
 	<tr>
-		<td scope="row" class="ps-4">${topic.votes}</td>
-		<td colspan="1">${topic.title}</td>
-		<td class="px-0"><i data-topicid="${topic.id}" class="fa-solid fa-circle-arrow-up fa-lg py-3 px-2 rounded-3 blue-color voteup"></i></td>
-		<td class="px-0"><i data-topicid="${topic.id}" class="fa-solid fa-circle-arrow-down fa-lg py-3 px-2 rounded-3 red-color votedown"></i></td>
+	<td scope="row" class="ps-4">${topic.votes}</td>
+	<td colspan="1">${topic.title}</td>
+	<td class="px-0"><i data-topicid="${topic.id}" class="fa-solid fa-circle-arrow-up fa-lg py-3 px-2 rounded-3 blue-color voteup"></i></td>
+	<td class="px-0"><i data-topicid="${topic.id}" class="fa-solid fa-circle-arrow-down fa-lg py-3 px-2 rounded-3 red-color votedown"></i>
+	</td>
 	</tr>
 	`;
 }
@@ -42,20 +43,20 @@ VotingView.prototype.renderWithAnimation = function(topicList) {
 
 		let currentTopicID = rows[i].querySelector('i').dataset.topicid;
 		let nextTopicID = rows[i + 1].querySelector('i').dataset.topicid;
-
+		
 		if(i != this.findTopicIdxByID(currentTopicID, topicList) &&
-			 i+1 != this.findTopicIdxByID(nextTopicID, topicList)) {
+		i+1 != this.findTopicIdxByID(nextTopicID, topicList)) {
 			currentRow.style = 'transform: translateY(+100%)';
 			nextRow.style = 'transform: translateY(-100%)';
 		}
-
-		setTimeout(() => {
-			this.render(topicList);
-		}, 300);
 	}
+
+	setTimeout(() => {
+		this.render(topicList);
+	}, 300);
 }
 
-VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics)
+VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics, getVotedTopics)
 {
 	document.addEventListener('DOMContentLoaded', () => {
 		getTopics(this.render.bind(this));
@@ -76,11 +77,11 @@ VotingView.prototype.bind = function(addTopic, voteUp, voteDown, getTopics)
 		let voteUpBtn = event.target.closest('.voteup');
 		let voteDownBtn = event.target.closest('.votedown');
 
-		if(voteUpBtn && this.tableBody.contains(voteUpBtn)) {
+		if(voteUpBtn && this.tableBody.contains(voteUpBtn) && !getVotedTopics().includes(voteUpBtn.dataset.topicid)) {
 			voteUp(voteUpBtn.dataset.topicid, this.renderWithAnimation.bind(this));
 		}
 
-		if(voteDownBtn && this.tableBody.contains(voteDownBtn)) {
+		if(voteDownBtn && this.tableBody.contains(voteDownBtn) && !getVotedTopics().includes(voteDownBtn.dataset.topicid)) {
 			voteDown(voteDownBtn.dataset.topicid, this.renderWithAnimation.bind(this));
 		}
 	}

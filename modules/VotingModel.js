@@ -1,12 +1,31 @@
 import { Topic } from "./Topic.js";
+
 export function VotingModel (votingView, votingDAO) {
 	this.topicList = [];
+	this.votedTopics = [];
 	this.votingDao = votingDAO;
 	this.votingView = votingView;
 }
 
+VotingModel.prototype.setVotedTopics = function (votedTopics) {
+	localStorage.setItem("votedTopics", JSON.stringify(votedTopics));
+	return;
+}
+
+VotingModel.prototype.getVotedTopics = function () {
+	return JSON.parse(localStorage.getItem("votedTopics"));
+}
+
 VotingModel.prototype.bind = function() {
-	this.votingView.bind(this.addTopic.bind(this), this.voteUp.bind(this), this.voteDown.bind(this), this.getTopicList.bind(this));
+	this.setVotedTopics([]);
+
+	this.votingView.bind(
+		this.addTopic.bind(this),
+		this.voteUp.bind(this),
+		this.voteDown.bind(this),
+		this.getTopicList.bind(this),
+		this.getVotedTopics.bind(this)
+	);
 }
 
 VotingModel.prototype.setTopicList = function(topicList, renderCallback) {
@@ -24,28 +43,34 @@ VotingModel.prototype.addTopic = function (topic, renderCallback) {
 }
 
 VotingModel.prototype.voteUp = function (topicID, renderCallback) {
+	this.votedTopics.push(topicID);
+	this.setVotedTopics(this.votedTopics);
+
 	this.topicList[this.findTopicIdxByID(topicID)].votes += 1;
 	this.sort();
 	this.votingDao.setTopics(this.topicList, renderCallback);
 }
 
 VotingModel.prototype.voteDown = function (topicID, renderCallback) {
+	this.votedTopics.push(topicID);
+	this.setVotedTopics(this.votedTopics);
+
 	this.topicList[this.findTopicIdxByID(topicID)].votes -= 1;
 	this.sort();
 	this.votingDao.setTopics(this.topicList, renderCallback);
 }
 
 VotingModel.prototype.sort = function() {
-    this.topicList.sort(function(a, b) {
-        return b.votes - a.votes;
-    });
+	this.topicList.sort(function(a, b) {
+		return b.votes - a.votes;
+	});
 }
 
 // Helper func.: Find id of the topic in the list by ID of the topic
 VotingModel.prototype.findTopicIdxByID = function (topicID) {
 	for (let i = 0; i < this.topicList.length; i++)
-		if (this.topicList[i].id == topicID)
-			return i;
+	if (this.topicList[i].id == topicID)
+	return i;
 
 	return null;
 }

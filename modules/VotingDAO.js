@@ -1,7 +1,7 @@
 
 export function VotingDAO() {
-	// this.serverBaseURL = 'http://localhost:8080';
-	this.serverBaseURL = 'https://voting-buddy-server.vercel.app';
+	this.serverBaseURL = 'http://localhost:8080';
+	// this.serverBaseURL = 'https://voting-buddy-server.vercel.app';
 }
 
 VotingDAO.prototype.getTopicList = async function(setTopicListCallback, renderCallback) {
